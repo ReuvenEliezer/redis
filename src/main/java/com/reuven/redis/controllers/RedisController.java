@@ -19,7 +19,6 @@ public class RedisController {
         this.userService = userService;
     }
 
-
     @PostMapping()
     public User save(@RequestBody UserViewModel userViewModel) {
         return userService.save(userViewModel);
@@ -35,4 +34,20 @@ public class RedisController {
     public List<User> findAll() {
         return userService.findAll();
     }
+
+    @DeleteMapping("/all")
+    public void deleteAll() {
+        userService.deleteAll();
+    }
+
+    @DeleteMapping("/{uuid}")
+    public void deleteById(@PathVariable UUID uuid) {
+        userService.deleteById(uuid);
+    }
+
+    @DeleteMapping("/all2")
+    public Long deleteAllByTemplate() {
+        return userService.deleteAllByRedisTemplate();
+    }
+
 }

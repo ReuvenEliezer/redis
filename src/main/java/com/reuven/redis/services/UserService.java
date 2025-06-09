@@ -14,4 +14,10 @@ public interface UserService {
     Optional<User> getById(UUID uuid);
 
     List<User> findAll();
+
+    void deleteAll();
+
+    void deleteById(UUID uuid);
+
+    Long deleteAllByRedisTemplate();
 }
